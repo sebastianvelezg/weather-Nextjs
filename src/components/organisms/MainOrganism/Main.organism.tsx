@@ -7,16 +7,21 @@ import {
   CardCodeCopyButton,
   CardCodes,
   CardContainer,
+  CardOptionsButton,
+  CardOptionsButtonsContainer,
   CardOptionsContainer,
+  CardOptionsInput,
+  CardOptionsInputText,
+  CardOptionsTitle,
   CardSectionWrapper,
   MainOrganismWrapper,
 } from "./Main.styled";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { monokai } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { atelierLakesideDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 export const MainOrganism = () => {
-  const [backgroundColor, setBackgroundColor] = useState("#a9a4a4"); // Set initial state for background color
+  const [backgroundColor, setBackgroundColor] = useState("#2eff00"); // Set initial state for background color
   const handleBackgroundColorChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -76,13 +81,13 @@ export const MainOrganism = () => {
 
   const codeString = `
   export const CardWrapper = styled.div\`
-    display: ${display};
-    flex-direction: ${flexDirection};
-    justify-content: ${justifyItems};
-    align-items: ${alignItems};
-    width: ${width}rem;
-    height: ${height}rem;
-    border-radius: ${borderRadius}rem;
+      display: ${display};
+      flex-direction: ${flexDirection};
+      justify-content: ${justifyItems};
+      align-items: ${alignItems};
+      width: ${width}rem;
+      height: ${height}rem;
+      border-radius: ${borderRadius}rem;
     padding: ${padding}rem;
     margin: ${margin}rem;
     background-color: ${backgroundColor};
@@ -92,6 +97,8 @@ export const MainOrganism = () => {
 `;
   const codeString2 = `
   import { CardWrapper } from "./Card.styled";
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
   type CardProps = {};
   
@@ -112,16 +119,16 @@ export const MainOrganism = () => {
 
   return (
     <MainOrganismWrapper>
-      <h1>Choose a background color for the team card</h1>
+      <h1>SC Card Generator</h1>
       <CardSectionWrapper>
         <CardOptionsContainer>
-          <p>Background Color</p>
+          <CardOptionsTitle>Background Color</CardOptionsTitle>
           <input
             type="color"
             value={backgroundColor}
             onChange={handleBackgroundColorChange}
           />
-          <p>width</p>
+          <CardOptionsTitle>width</CardOptionsTitle>
           <Slider
             value={width}
             min={0}
@@ -129,8 +136,8 @@ export const MainOrganism = () => {
             step={0.1}
             onChange={handleWidthChange}
           />
-          <input type="text" value={width} onChange={() => {}} />
-          <p>height</p>
+          <CardOptionsInput type="text" value={width} onChange={() => {}} />
+          <CardOptionsTitle>height</CardOptionsTitle>
           <Slider
             value={height}
             min={0}
@@ -138,8 +145,8 @@ export const MainOrganism = () => {
             step={0.1}
             onChange={handleHeightChange}
           />
-          <input type="text" value={height} onChange={() => {}} />
-          <p>Gap</p>
+          <CardOptionsInput type="text" value={height} onChange={() => {}} />
+          <CardOptionsTitle>Gap</CardOptionsTitle>
           <Slider
             value={gap}
             min={0}
@@ -147,8 +154,8 @@ export const MainOrganism = () => {
             step={0.1}
             onChange={handleGapChange}
           />
-          <input type="text" value={gap} onChange={() => {}} />
-          <p>Margin</p>
+          <CardOptionsInput type="text" value={gap} onChange={() => {}} />
+          <CardOptionsTitle>Margin</CardOptionsTitle>
           <Slider
             value={margin}
             min={0}
@@ -156,8 +163,8 @@ export const MainOrganism = () => {
             step={0.1}
             onChange={handleMarginChange}
           />
-          <input type="text" value={margin} onChange={() => {}} />
-          <p>Padding</p>
+          <CardOptionsInput type="text" value={margin} onChange={() => {}} />
+          <CardOptionsTitle>Padding</CardOptionsTitle>
           <Slider
             value={padding}
             min={0}
@@ -165,61 +172,23 @@ export const MainOrganism = () => {
             step={0.1}
             onChange={handlePaddingChange}
           />
-          <input type="text" value={padding} onChange={() => {}} />
-          <p>Border Radius</p>
+          <CardOptionsInput type="text" value={padding} onChange={() => {}} />
+          <CardOptionsTitle>Border Radius</CardOptionsTitle>
           <Slider
             value={borderRadius}
             min={0}
             max={50}
             step={0.1}
             onChange={handleBorderRadiusChange}
+            color="secondary"
           />
-          <input type="text" value={borderRadius} onChange={() => {}} />
-
-          <p>Align Items</p>
-          <button onClick={() => handleAlignItemsChange("flex-start")}>
-            flex-start
-          </button>
-          <button onClick={() => handleAlignItemsChange("center")}>
-            center
-          </button>
-          <button onClick={() => handleAlignItemsChange("flex-end")}>
-            flex-end
-          </button>
-          <p>Justify Content</p>
-          <button onClick={() => handleJustifyItemsChange("flex-start")}>
-            flex-start
-          </button>
-          <button onClick={() => handleJustifyItemsChange("center")}>
-            center
-          </button>
-          <button onClick={() => handleJustifyItemsChange("flex-end")}>
-            flex-end
-          </button>
-          <p>Display</p>
-          <button onClick={() => handleDisplayChange("flex")}>Flex</button>
-          <button onClick={() => handleDisplayChange("grid")}>Grid</button>
-          <button onClick={() => handleDisplayChange("block")}>Block</button>
-          <p>Flex Direction</p>
-          <button onClick={() => handleFlexDirectionChange("row")}>Row</button>
-          <button onClick={() => handleFlexDirectionChange("column")}>
-            Column
-          </button>
-          <p>Title</p>
-          <input
+          <CardOptionsInput
             type="text"
-            id="text-input"
-            value={title}
-            onChange={handleTitleChange}
-          />
-          <p>Paragraph</p>
-          <input
-            type="text"
-            id="text-input"
-            value={paragraph}
-            onChange={handleParagraphChange}
+            value={borderRadius}
+            onChange={() => {}}
           />
         </CardOptionsContainer>
+
         <CardContainer>
           <TeamCardOrganism
             backgroundColor={backgroundColor}
@@ -237,11 +206,84 @@ export const MainOrganism = () => {
             paragraph={paragraph}
           />
         </CardContainer>
+        <CardOptionsContainer>
+          <CardOptionsTitle>Align Items</CardOptionsTitle>
+          <CardOptionsButtonsContainer>
+            <CardOptionsButton
+              onClick={() => handleAlignItemsChange("flex-start")}
+            >
+              flex-start
+            </CardOptionsButton>
+            <CardOptionsButton onClick={() => handleAlignItemsChange("center")}>
+              center
+            </CardOptionsButton>
+            <CardOptionsButton
+              onClick={() => handleAlignItemsChange("flex-end")}
+            >
+              flex-end
+            </CardOptionsButton>
+          </CardOptionsButtonsContainer>
+          <CardOptionsTitle>Justify Content</CardOptionsTitle>
+          <CardOptionsButtonsContainer>
+            <CardOptionsButton
+              onClick={() => handleJustifyItemsChange("flex-start")}
+            >
+              flex-start
+            </CardOptionsButton>
+            <CardOptionsButton
+              onClick={() => handleJustifyItemsChange("center")}
+            >
+              center
+            </CardOptionsButton>
+            <CardOptionsButton
+              onClick={() => handleJustifyItemsChange("flex-end")}
+            >
+              flex-end
+            </CardOptionsButton>
+          </CardOptionsButtonsContainer>
+          <CardOptionsTitle>Display</CardOptionsTitle>
+          <CardOptionsButtonsContainer>
+            <CardOptionsButton onClick={() => handleDisplayChange("flex")}>
+              Flex
+            </CardOptionsButton>
+            <CardOptionsButton onClick={() => handleDisplayChange("grid")}>
+              Grid
+            </CardOptionsButton>
+            <CardOptionsButton onClick={() => handleDisplayChange("block")}>
+              Block
+            </CardOptionsButton>
+          </CardOptionsButtonsContainer>
+          <CardOptionsTitle>Flex Direction</CardOptionsTitle>
+          <CardOptionsButtonsContainer>
+            <CardOptionsButton onClick={() => handleFlexDirectionChange("row")}>
+              Row
+            </CardOptionsButton>
+            <CardOptionsButton
+              onClick={() => handleFlexDirectionChange("column")}
+            >
+              Column
+            </CardOptionsButton>
+          </CardOptionsButtonsContainer>
+          <CardOptionsTitle>Title</CardOptionsTitle>
+          <CardOptionsInputText
+            type="text"
+            id="text-input"
+            value={title}
+            onChange={handleTitleChange}
+          />
+          <CardOptionsTitle>Paragraph</CardOptionsTitle>
+          <CardOptionsInputText
+            type="text"
+            id="text-input"
+            value={paragraph}
+            onChange={handleParagraphChange}
+          />
+        </CardOptionsContainer>
       </CardSectionWrapper>
       <CardCodes>
         <CardCodeBlock>
           <CardCodeBlockCopy>
-            <p>Example code</p>
+            <CardOptionsTitle>Example code</CardOptionsTitle>
             {copy ? (
               <CardCodeCopyButton>Code Copied!</CardCodeCopyButton>
             ) : (
@@ -260,7 +302,7 @@ export const MainOrganism = () => {
             wrapLines={true}
             showLineNumbers
             language="typescript"
-            style={monokai}
+            style={atelierLakesideDark}
             cop
             lineProps={(lineNumber) => ({
               style: { wordWrap: "break-word", whiteSpace: "pre-wrap" },
@@ -271,7 +313,7 @@ export const MainOrganism = () => {
         </CardCodeBlock>
         <CardCodeBlock>
           <CardCodeBlockCopy>
-            <p>Example code</p>
+            <CardOptionsTitle>Example code</CardOptionsTitle>
             {copy2 ? (
               <CardCodeCopyButton>Code Copied!</CardCodeCopyButton>
             ) : (
@@ -290,7 +332,7 @@ export const MainOrganism = () => {
             wrapLines={true}
             showLineNumbers
             language="typescript"
-            style={monokai}
+            style={atelierLakesideDark}
             cop
             lineProps={(lineNumber) => ({
               style: { wordWrap: "break-word", whiteSpace: "pre-wrap" },

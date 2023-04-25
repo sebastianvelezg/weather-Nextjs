@@ -36,6 +36,7 @@ export const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: ${({ theme }) => theme.TOKENS.T3.i800};
+    background-color:black
   }
 
   img, picture, video, canvas, svg {

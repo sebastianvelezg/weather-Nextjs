@@ -1,11 +1,9 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
+
 import { MainSection } from "@/components/sections/MainSection/Main.section";
 import { HeaderLayout } from "@/components/layouts/HeaderLayout/Header.layout";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+export default function textGenerator() {
   return (
     <>
       <Head>
@@ -16,6 +14,7 @@ export default function Home() {
       </Head>
       <main>
         <HeaderLayout />
+        <p>text generator</p>
       </main>
     </>
   );
