@@ -1,14 +1,5 @@
-import { useState } from "react";
-
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faRainbow,
-  faLocationDot,
-  faMagnifyingGlass,
-  faWater,
-  faWind,
-} from "@fortawesome/free-solid-svg-icons";
+
 import {
   SmallForecastChanceRain,
   SmallForecastChanceRainNumber,

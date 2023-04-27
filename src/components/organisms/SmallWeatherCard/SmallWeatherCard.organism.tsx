@@ -126,9 +126,7 @@ export const SmallWeatherCardOrganism = (props: SmallWeatherCardProps) => {
 
     try {
       const response = await axios.get<WeatherData>(
-        // `https://api.weatherapi.com/v1/current.json?key=969ebdf30efc4c9784d151802232604&q=${location}`
-        `http://api.weatherapi.com/v1/forecast.json?key=969ebdf30efc4c9784d151802232604&q=${location}&days=3`
-        // `http://api.weatherapi.com/v1/forecast.json?key=969ebdf30efc4c9784d151802232604&q=medellin&days=1`
+        `https://api.weatherapi.com/v1/forecast.json?key=969ebdf30efc4c9784d151802232604&q=${location}&days=3`
       );
       setWeatherData(response.data);
       setLoading(false);
