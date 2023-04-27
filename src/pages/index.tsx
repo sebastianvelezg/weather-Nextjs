@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import { MainSection } from "@/components/sections/MainSection/Main.section";
-import { HeaderLayout } from "@/components/layouts/HeaderLayout/Header.layout";
+import { SmallWeatherCardOrganism } from "@/components/organisms/SmallWeatherCard/SmallWeatherCard.organism";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <HeaderLayout />
+        <SmallWeatherCardOrganism />
       </main>
     </>
   );
