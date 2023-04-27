@@ -10,7 +10,8 @@ interface SmallWeatherNotFoundProps {
 export const SmallWeatherCardBody = styled.div`
   padding-top: 5rem;
   padding-bottom: 5rem;
-  height: 100%;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   align-items: center;
