@@ -8,12 +8,18 @@ interface SmallWeatherNotFoundProps {
 }
 
 export const SmallWeatherCardBody = styled.div`
-  height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  height: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background: #054f7e;
-  gap: 2rem;
+  gap: 3rem;
+  @media screen and (max-width: 980px) {
+    flex-direction: column;
+  }
 `;
 
 export const SmallWeatherContainer = styled.div<SmallWeatherNotFoundProps>`
@@ -254,6 +260,10 @@ export const SmallForecastContainer = styled.div`
   transition: 0.6s ease-out;
   flex-direction: column;
   display: flex;
+  @media screen and (max-width: 560px) {
+    width: 40rem;
+    height: fit-content;
+  }
 `;
 
 export const SmallForecastContainerMap = styled.div`

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import {
+  SmallForecastChanceOfRain,
   SmallForecastChanceRain,
   SmallForecastChanceRainNumber,
   SmallForecastChanceRainText,
@@ -34,7 +35,7 @@ export const SmallForecastCardOrganism = (props: SmallWeatherCardProps) => {
         </SmallForecastTempTop>
         <SmallForecastTempText>{temperature}°</SmallForecastTempText>
       </SmallForecastTemp>
-      <div>
+      <SmallForecastChanceOfRain>
         <SmallForecastTempIcon>
           <Image
             alt=""
@@ -55,7 +56,7 @@ export const SmallForecastCardOrganism = (props: SmallWeatherCardProps) => {
             {chanceOfRain}%
           </SmallForecastChanceRainNumber>
         </SmallForecastChanceRain>
-      </div>
+      </SmallForecastChanceOfRain>
       <SmallForecastContainerRight>
         <div>
           <p>{date}</p>
